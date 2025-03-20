@@ -3,7 +3,7 @@
 
 #include <stdbool.h>
 typedef int Data;
-#define TAM 100
+#define TAM 100   // Tamaño máximo de la pila
 
 typedef struct {
     Data data[TAM];

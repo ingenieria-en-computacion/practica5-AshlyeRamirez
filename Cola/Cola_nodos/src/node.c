@@ -1,4 +1,6 @@
 #include "node.h"
+#include <stdlib.h>
+#include <stdio.h>
 
 /**
  * Crea un nuevo nodo con los datos proporcionados y lo devuelve.
@@ -11,7 +13,13 @@
  *          proporcionado en el parámetro `d`, el siguiente .
  */
 Node *new_node(Data d){
-
+    Node *n = (Node *)malloc(sizeof(Node));  // Asignamos memoria para un nuevo nodo
+    if (n == NULL) {  // Verificamos 
+        return NULL;  // Si no se pudo, retornamos NULL
+    }
+    n->data = d;  // Establecemos el dato 
+    n->next = NULL;  // Inicializamos el siguiente nodo como NULL
+    return n;  // Devolvemos el nuevo nodo 
 }
 
 /**
@@ -24,7 +32,12 @@ Node *new_node(Data d){
  *          de ser eliminado. Está función solo libera nodos cuyo enlace al siguiente es nulo
  */
 void delete_node(Node* n){
-
+     if (n == NULL) {  // Si es NULL, no hacemos nada
+            return;
+        }
+        if (n->next == NULL) {  // Solo eliminamos el nodo si el siguiente nodo es NULL
+            free(n);  // Liberamos la memoria del nodo
+        }    
 }
 
 /**
@@ -36,5 +49,14 @@ void delete_node(Node* n){
  *          indicando que el nodo es inválido. La salida se dirige a la salida estándar (stdout).
  */
 void print_node(Node* n){
-
+    if (n == NULL) {  // Si el puntero es NULL, imprimimos un mensaje de error
+        printf("Nodo inválido.\n");
+    } else {
+        printf("Nodo: %d\n", n->data);  // Imprimimos el dato almacenado en el nodo
+        if (n->next == NULL) {
+            printf("Siguiente: NULL\n");  // Si no hay siguiente, indicamos que es NULL
+        } else {
+            printf("Siguiente: %p\n", (void*)n->next);  // Imprimime la dirección del siguiente nodo
+        }
+    }
 }

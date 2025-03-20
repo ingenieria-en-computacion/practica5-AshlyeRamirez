@@ -8,7 +8,7 @@ typedef struct Node {
 } Node;
 
 Node *new_node(Data);
-void delete_node(Node*);
-void print_node(Node*);
+void delete_node(Node* n);
+void print_node(Node* n);
 
 #endif

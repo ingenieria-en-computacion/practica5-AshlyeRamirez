@@ -9,11 +9,11 @@ typedef struct {
 } Queue;
 
 Queue* queue_create();
-void queue_enqueue(Queue* , Data);
-int queue_dequeue(Queue*);
-bool queue_is_empty(Queue*);
-Data queue_front(Queue*);
-void queue_empty(Queue*);
-void queue_delete(Queue*);
+void queue_enqueue(Queue* q, Data);
+int queue_dequeue(Queue* q);
+bool queue_is_empty(Queue* q);
+Data queue_front(Queue* q);
+void queue_empty(Queue* q);
+void queue_delete(Queue* q);
 
 #endif // __QUEUE_H__

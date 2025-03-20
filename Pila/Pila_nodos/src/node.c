@@ -1,4 +1,6 @@
 #include "node.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 /**
  * Crea un nuevo nodo con los datos proporcionados y lo devuelve.
@@ -11,7 +13,18 @@
  *          proporcionado en el parámetro `d`, el siguiente .
  */
 Node *new_node(Data d){
+    // Asignar memoria para un nuevo nodo
+    Node* n = (Node*)malloc(sizeof(Node));
+    if (n == NULL) {
+        // Si falla, devolver NULL
+        return NULL;
+    }
 
+    // Inicializar los campos del nodo
+    n->data = d;
+    n->next = NULL;
+    
+    return n;
 }
 
 /**
@@ -24,7 +37,10 @@ Node *new_node(Data d){
  *          de ser eliminado. Está función solo libera nodos cuyo enlace al siguiente es nulo
  */
 void delete_node(Node* n){
-
+    // Si es NULL no haces nada
+    if (n != NULL) {
+        free(n);
+    }
 }
 
 /**
@@ -36,5 +52,9 @@ void delete_node(Node* n){
  *          indicando que el nodo es inválido. La salida se dirige a la salida estándar (stdout).
  */
 void print_node(Node* n){
-
+    if (n == NULL) {
+        printf("Nodo inválido\n");
+    } else {
+        printf("Nodo con dato: %d\n", n->data);
+    }
 }
