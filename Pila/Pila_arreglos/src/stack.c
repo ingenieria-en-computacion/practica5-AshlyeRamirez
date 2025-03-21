@@ -24,7 +24,7 @@ Stack stack_create(){
  *          la función no realiza ninguna operación.
  */
 void stack_push(Stack* s, Data d){
-    f (s->top == TAM - 1) {
+    if (s->top == TAM - 1) {
         printf("Error: La pila está llena.\n");
         return;
     }
